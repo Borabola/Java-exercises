@@ -35,7 +35,7 @@ public class CalibrateLines {
         return calibrationValues;
     }
 
-    public int calckSum (List<Integer> calibrationValues) {
+    public int calcSum (List<Integer> calibrationValues) {
         int sum = 0;
         for (int value : calibrationValues) {
             sum += value;
