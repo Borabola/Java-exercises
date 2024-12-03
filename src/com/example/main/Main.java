@@ -36,30 +36,23 @@ public class Main {
         //exs do the first day of this advent of code 2023
 
         CalibrateLines calibrateLines = new CalibrateLines();
-        String filePath = "https://drive.google.com/file/d/1AFw00LHoE_PpsagOFO06Y4qOuWd54bS1/view?usp=sharing";
-        String filePath2 ="https://adventofcode.com/2023/day/1";
+        //String filePath2 ="https://adventofcode.com/2023/day/1"; initial data file
 
         // I added a new file for testing: src/resources/foo.txt
         // Using File.separator for win/unix style universal handling
         String filePath3 = "src" + File.separator + "resources" + File.separator + "foo.txt";
-        List<Integer> calibrationValues = null;
+
+        int totalInt;
 
         // check exceptions here, calibrationValues will throw an exception in case of an issue
         try {
-            calibrationValues = calibrateLines.calibrateLines(filePath3);
-            for (int value : calibrationValues) {
-                System.out.println(value);
-            }
+            totalInt = calibrateLines.calibrateLines(filePath3);
+            System.out.println(totalInt);
         } catch (IOException e) {
             // smooth error display
             System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
             // make sure to exit with a non-zero return code
             System.exit(1);
         }
-
-
-//        if (calibrationValues) {
-//            System.out.println("The sum of all of the calibration values" + calibrateLines.calckSum(calibrationValues));
-//        }
     }
 }

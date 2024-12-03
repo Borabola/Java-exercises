@@ -6,40 +6,44 @@ import java.nio.file.Path;
 import java.io.IOException;
 
 public class CalibrateLines {
-
     // we tell the method that it's OK th throw an IOException in case of issues, the caller will handle this
-    public List<Integer> calibrateLines(String filePath) throws IOException {
+    public int calibrateLines(String filePath) throws IOException {
 
         // use newer java feature Path.of (not working with java 8)
         Path filePathReceived = Path.of(filePath);
         List<Integer> calibrationValues = new ArrayList<>();
+        int sum = 0;
 
         List<String> lines = Files.readAllLines(filePathReceived);
         for (String line : lines) {
-            //System.out.println("lines" + line);
-            line = line.trim();
             if (!line.isEmpty()) {
+                List<String> numberList = new ArrayList<>();
+                int currentLineNumber;
+                String[] numberText = line.trim().split("\\D");
 
-                char firstChar = line.charAt(0);
-                System.out.println("firstChar" + firstChar);
-                char lastChar = line.charAt(line.length() - 1);
-                if (Character.isDigit(firstChar) && Character.isDigit(lastChar)) {
-
-                    int calibrationValue = Integer.parseInt("" + firstChar + lastChar);
-                    calibrationValues.add(calibrationValue);
+                for (String element : numberText) {
+                    if (!element.isEmpty()) {
+                        for (char digit : element.toCharArray()) {
+                            numberList.add(String.valueOf(digit));
+                        }
+                    }
+                }
+                 try {
+                    currentLineNumber = Integer.parseInt(numberList.get(0) + numberList.get(numberList.toArray().length - 1));
+                    calibrationValues.add(currentLineNumber);
+                    sum += currentLineNumber;
+                    System.out.println("currentLineNumber " + currentLineNumber);
+                } catch (NumberFormatException e) {
+                    // smooth error display
+                    System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
+                    // make sure to exit with a non-zero return code
+                    System.exit(1);
                 }
             }
         }
 
-        return calibrationValues;
-    }
-
-    public int calcSum (List<Integer> calibrationValues) {
-        int sum = 0;
-        for (int value : calibrationValues) {
-            sum += value;
-        }
-
+        System.out.println("total sum :" + sum);
+        System.out.println("calibrationValues: " + calibrationValues);
         return sum;
     }
 }
