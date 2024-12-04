@@ -3,17 +3,17 @@ package com.example.sortlists;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
+import java.util.*;
 
 public class SortLists {
+    List<Integer> leftColumn = new ArrayList<>();
+    List<Integer> rightColumn = new ArrayList<>();
+
     public int AddDiff(String filePath) throws IOException {
         // use newer java feature Path.of (not working with java 8)
         Path filePathReceived = Path.of(filePath);
 
-        List<Integer> leftColumn = new ArrayList<>();
-        List<Integer> rightColumn = new ArrayList<>();
+
         int sum = 0;
 
         List<String> lines = Files.readAllLines(filePathReceived);
@@ -44,5 +44,23 @@ public class SortLists {
 
         System.out.println("Sum " + sum);
         return sum;
+    }
+
+    public int calculateWeightedSum() {
+        int sum2 = 0;
+
+        // Count occurrences of elements in rightColumn
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : rightColumn) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Calculate the weighted sum
+        for (int num : leftColumn) {
+            int count = frequencyMap.getOrDefault(num, 0);
+            sum2 += num * count;
+        }
+        System.out.println("Sum 2" + sum2);
+        return sum2;
     }
 }

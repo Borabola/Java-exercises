@@ -61,11 +61,14 @@ public class Main {
         String filePath1 = "src" + File.separator + "resources" + File.separator + "exs1_2024.txt";
         SortLists sortLists = new SortLists();
         int totalInt2;
+        int similarityScore;
 
         // check exceptions here, calibrationValues will throw an exception in case of an issue
         try {
             totalInt2 = sortLists.AddDiff(filePath1);
+            similarityScore = sortLists.calculateWeightedSum();
             System.out.println(totalInt2);
+            System.out.println("similarityScore " + similarityScore);
         } catch (IOException e) {
             // smooth error display
             System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
