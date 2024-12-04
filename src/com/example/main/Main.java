@@ -8,6 +8,7 @@ import java.util.List;
 //import com.example.removeAdjacentDuplicates.RemoveAdjacentDuplicates;
 //import com.example.reverseWords.ReverseWords;
 import com.example.caliibrateLines.CalibrateLines;
+import com.example.sortlists.SortLists;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,21 +34,38 @@ public class Main {
 //        String result = reverseWords.reverseWords("Reverse words in a given string");
 //        System.out.println("The new string after reversing the words is: " + result);
 
-        //exs do the first day of this advent of code 2023
 
-        CalibrateLines calibrateLines = new CalibrateLines();
+        //exs 1_2023 do the first day of this advent of code 2023
+        //CalibrateLines calibrateLines = new CalibrateLines();
         //String filePath2 ="https://adventofcode.com/2023/day/1"; initial data file
 
         // I added a new file for testing: src/resources/foo.txt
         // Using File.separator for win/unix style universal handling
-        String filePath3 = "src" + File.separator + "resources" + File.separator + "foo.txt";
+//        String filePath3 = "src" + File.separator + "resources" + File.separator + "foo.txt";
+//
+//        int totalInt;
+//
+//        // check exceptions here, calibrationValues will throw an exception in case of an issue
+//        try {
+//            totalInt = calibrateLines.calibrateLines(filePath3);
+//            System.out.println(totalInt);
+//        } catch (IOException e) {
+//            // smooth error display
+//            System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
+//            // make sure to exit with a non-zero return code
+//            System.exit(1);
+//        }
 
-        int totalInt;
+
+        //exs 1_2024
+        String filePath1 = "src" + File.separator + "resources" + File.separator + "exs1_2024.txt";
+        SortLists sortLists = new SortLists();
+        int totalInt2;
 
         // check exceptions here, calibrationValues will throw an exception in case of an issue
         try {
-            totalInt = calibrateLines.calibrateLines(filePath3);
-            System.out.println(totalInt);
+            totalInt2 = sortLists.AddDiff(filePath1);
+            System.out.println(totalInt2);
         } catch (IOException e) {
             // smooth error display
             System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
