@@ -8,6 +8,7 @@ import java.util.List;
 //import com.example.removeAdjacentDuplicates.RemoveAdjacentDuplicates;
 //import com.example.reverseWords.ReverseWords;
 import com.example.caliibrateLines.CalibrateLines;
+import com.example.safeReports.SafeReports;
 import com.example.sortlists.SortLists;
 
 public class Main {
@@ -58,17 +59,33 @@ public class Main {
 
 
         //exs 1_2024
-        String filePath1 = "src" + File.separator + "resources" + File.separator + "exs1_2024.txt";
-        SortLists sortLists = new SortLists();
-        int totalInt2;
-        int similarityScore;
+//        String filePath1 = "src" + File.separator + "resources" + File.separator + "exs1_2024.txt";
+//        SortLists sortLists = new SortLists();
+//        int totalInt2;
+//        int similarityScore;
+//
+//        // check exceptions here, calibrationValues will throw an exception in case of an issue
+//        try {
+//            totalInt2 = sortLists.AddDiff(filePath1);
+//            similarityScore = sortLists.calculateWeightedSum();
+//            System.out.println(totalInt2);
+//            System.out.println("similarityScore " + similarityScore);
+//        } catch (IOException e) {
+//            // smooth error display
+//            System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
+//            // make sure to exit with a non-zero return code
+//            System.exit(1);
+//        }
 
-        // check exceptions here, calibrationValues will throw an exception in case of an issue
+
+
+
+        //exs 2_2024
+        String filePath2 = "src" + File.separator + "resources" + File.separator + "exs2_2024.txt";
+        SafeReports safeReports = new SafeReports();
         try {
-            totalInt2 = sortLists.AddDiff(filePath1);
-            similarityScore = sortLists.calculateWeightedSum();
-            System.out.println(totalInt2);
-            System.out.println("similarityScore " + similarityScore);
+            int safeReportsQnt  = safeReports.CalkSafeReports(filePath2);
+            System.out.println("Qnt of safe reports" + safeReportsQnt);
         } catch (IOException e) {
             // smooth error display
             System.out.println("\nError: " + e.getClass() + ": " + e.getMessage() + "\n");
